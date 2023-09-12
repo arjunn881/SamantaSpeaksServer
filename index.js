@@ -1,6 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
+import cors from 'cors';
 import dotenv from "dotenv";
+import multer from "multer";
 import userRouter from "./routes/user.js";
 import authRouter from "./routes/auth.js";
 import messageRouter from "./routes/Home/message.js";
@@ -25,7 +27,9 @@ import membershipsRouter from "./routes/AwardsNRecognition/memberships.js";
 dotenv.config();
 
 const app = express();
+app.use(cors());
 app.use(express.json());
+
 
 
 // const MONGO_URL = "mongodb+srv://arjunn881:admin@cluster0.8b9rvgn.mongodb.net/?retryWrites=true&w=majority"
@@ -44,6 +48,19 @@ mongoose
 app.get("/api", (req, res) => {
   res.status(200).json("Samanta Speaks APIs");
 });
+
+const storage = multer.diskStorage({
+  destination:(req,file,cb)=>{
+    cb(null, "images")
+  },filename:(req,file,cb)=>{
+    cb(null,req.body.name);
+  }
+})
+
+const upload = multer({storage:storage});
+app.post("/api/upload", upload.single("file"), (req,res)=>{
+  res.status(200).json("file has been uploaded");
+})
 
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
@@ -85,9 +102,6 @@ app.use("/api/report", reportsRouter );
 
 //ContactUs APIs
 app.use("/api/form", formRouter);
-
-
-
 
 
 app.listen(process.env.PORT || 5000, () => {
