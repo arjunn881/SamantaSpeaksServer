@@ -45,9 +45,16 @@ mongoose
     console.log(error);
   });
 
+
+
+
 app.get("/api", (req, res) => {
   res.status(200).json("Samanta Speaks APIs");
 });
+
+
+
+//File Storage
 
 const storage = multer.diskStorage({
   destination:(req,file,cb)=>{
@@ -61,6 +68,9 @@ const upload = multer({storage:storage});
 app.post("/api/upload", upload.single("file"), (req,res)=>{
   res.status(200).json("file has been uploaded");
 })
+
+
+//Auth APIs
 
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
