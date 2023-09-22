@@ -46,8 +46,6 @@ mongoose
   });
 
 
-
-
 app.get("/api", (req, res) => {
   res.status(200).json("Samanta Speaks APIs");
 });
@@ -103,7 +101,7 @@ app.use('/api/committeeMembership', committeeMembershipRouter)
 //Awards & Recognition APIs
 app.use('/api/awards', awardsRouter),
 app.use('/api/doctorates', doctoratesRouter),
-app.use('/api/memberships', membershipsRouter),
+app.use('/api/memberships', membershipsRouter), 
 
 
 //MP Report APIs
