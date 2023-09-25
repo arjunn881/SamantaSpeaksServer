@@ -76,7 +76,7 @@ app.use("/api/auth", authRouter);
 // Home APIs
 
 app.use("/api/messages", messageRouter);
-app.use("/api/articles/", articleRouter);
+app.use("/api/articles", articleRouter);
 app.use("/api/news", newsRouter);
 app.use("/api/testimony", testimonyRouter);
 app.use("/api/internationalVisit", internationalVisitRouter);
