@@ -1,7 +1,7 @@
 import express from 'express';
 import { verifyTokenAndAdmin } from "../verifyToken.js";
-import { AddSupplementaryQuestion, deleteSupplementaryQuestion, getSupplementaryQuestion, updateSupplementaryQuestion } from '../../controllers/politics/supplementaryQuestion.js';
-import { getAllParliamentQuestion } from '../../controllers/politics/parliamentQuestons.js';
+import { AddSupplementaryQuestion, deleteSupplementaryQuestion, getAllSupplementaryQuestion, getSupplementaryQuestion, updateSupplementaryQuestion } from '../../controllers/politics/supplementaryQuestion.js';
+
 
 const supplementaryQuestionRouter = express.Router();
 
@@ -10,6 +10,6 @@ supplementaryQuestionRouter.put("/:id", verifyTokenAndAdmin, updateSupplementary
 supplementaryQuestionRouter.delete("/:id", verifyTokenAndAdmin, deleteSupplementaryQuestion)
 
 supplementaryQuestionRouter.get("/:id", getSupplementaryQuestion);
-supplementaryQuestionRouter.get("/", getAllParliamentQuestion);
+supplementaryQuestionRouter.get("/", getAllSupplementaryQuestion);
 
 export default supplementaryQuestionRouter;

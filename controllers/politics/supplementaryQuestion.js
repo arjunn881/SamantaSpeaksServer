@@ -42,6 +42,7 @@ export const AddSupplementaryQuestion = async (req, res) => {
       const supplementaryQuestion = await SupplementaryQuestion.findById(req.params.id);
   
       res.status(200).json(supplementaryQuestion);
+      console.log(supplementaryQuestion)
     } catch (error) {
       res.status(500).json(error);
     }
