@@ -32,12 +32,9 @@ app.use(express.json());
 
 
 
-// const MONGO_URL = "mongodb+srv://arjunn881:admin@cluster0.8b9rvgn.mongodb.net/?retryWrites=true&w=majority"
-// const PASS_SEC = "shoep"
-// const JWT_SEC = "shoep"
 
 mongoose
-  .connect(process.env.MONGO_URL)
+  .connect("mongodb+srv://arjunn881:admin@cluster0.8b9rvgn.mongodb.net/?retryWrites=true&w=majority")
   .then(() => {
     console.log("Connected to Database");
   })
@@ -52,22 +49,6 @@ app.get("/api", (req, res) => {
 
 
 
-// //File Storage
-
-// const storage = multer.diskStorage({
-//   destination:(req,file,cb)=>{
-//     cb(null, "images")
-//   },filename:(req,file,cb)=>{
-//     cb(null,req.body.name);
-//   }
-// })
-
-// const upload = multer({storage:storage});
-// app.post("/api/upload", upload.single("file"), (req,res)=>{
-  
-  
-//   res.status(200).json("file has been uploaded");
-// })
 
 
 //Auth APIs
