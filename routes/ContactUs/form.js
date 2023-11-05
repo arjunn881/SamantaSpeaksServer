@@ -1,6 +1,6 @@
 
 import express  from "express";
-import { verifyTokenAndAdmin } from "../verifyToken.js";
+import verify from "../verifyToken.js";
 import { AddForm, deleteForm, getAllForm, getForm, updateForm } from "../../controllers/ContactUs/form.js";
 
 
@@ -9,9 +9,9 @@ import { AddForm, deleteForm, getAllForm, getForm, updateForm } from "../../cont
 
 const formRouter = express.Router();
 
-formRouter.post("/add",verifyTokenAndAdmin, AddForm);
-formRouter.put("/:id", verifyTokenAndAdmin, updateForm)
-formRouter.delete("/:id", verifyTokenAndAdmin, deleteForm)
+formRouter.post("/add",verify, AddForm);
+formRouter.put("/:id", verify, updateForm)
+formRouter.delete("/:id", verify, deleteForm)
 
 formRouter.get("/:id", getForm)
 formRouter.get("/", getAllForm)

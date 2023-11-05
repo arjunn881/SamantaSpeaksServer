@@ -1,6 +1,6 @@
 import express from "express";
 
-import { verifyTokenAndAdmin } from "../verifyToken.js";
+import verify from "../verifyToken.js";
 import { AddReport, deleteReport, getAllReports, getReport, updateReport } from "../../controllers/MPReport/reports.js";
 
 
@@ -10,9 +10,9 @@ import { AddReport, deleteReport, getAllReports, getReport, updateReport } from 
 
 const reportsRouter = express.Router();
 
-reportsRouter.post("/add",verifyTokenAndAdmin,AddReport );
-reportsRouter.put("/:id", verifyTokenAndAdmin,updateReport )
-reportsRouter.delete("/:id", verifyTokenAndAdmin,deleteReport )
+reportsRouter.post("/add",verify,AddReport );
+reportsRouter.put("/:id", verify,updateReport )
+reportsRouter.delete("/:id", verify,deleteReport )
 
 reportsRouter.get("/:id", getReport )
 reportsRouter.get("/", getAllReports )

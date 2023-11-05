@@ -52,20 +52,22 @@ app.get("/api", (req, res) => {
 
 
 
-//File Storage
+// //File Storage
 
-const storage = multer.diskStorage({
-  destination:(req,file,cb)=>{
-    cb(null, "images")
-  },filename:(req,file,cb)=>{
-    cb(null,req.body.name);
-  }
-})
+// const storage = multer.diskStorage({
+//   destination:(req,file,cb)=>{
+//     cb(null, "images")
+//   },filename:(req,file,cb)=>{
+//     cb(null,req.body.name);
+//   }
+// })
 
-const upload = multer({storage:storage});
-app.post("/api/upload", upload.single("file"), (req,res)=>{
-  res.status(200).json("file has been uploaded");
-})
+// const upload = multer({storage:storage});
+// app.post("/api/upload", upload.single("file"), (req,res)=>{
+  
+  
+//   res.status(200).json("file has been uploaded");
+// })
 
 
 //Auth APIs

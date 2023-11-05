@@ -1,12 +1,12 @@
 import  express  from "express";
-import { verifyTokenAndAdmin } from "../verifyToken.js";
+import verify from "../verifyToken.js";
 import { AddMemberships, deleteMemberships, getAllMemberships, getMemberships, updateMemberships } from "../../controllers/AwardsNRecognition/memberships.js";
 
 const membershipsRouter = express.Router();
 
-membershipsRouter.post("/add",verifyTokenAndAdmin, AddMemberships);
-membershipsRouter.put("/:id", verifyTokenAndAdmin, updateMemberships)
-membershipsRouter.delete("/:id", verifyTokenAndAdmin, deleteMemberships)
+membershipsRouter.post("/add",verify, AddMemberships);
+membershipsRouter.put("/:id", verify, updateMemberships)
+membershipsRouter.delete("/:id", verify, deleteMemberships)
 
 membershipsRouter.get("/:id", getMemberships)
 membershipsRouter.get("/", getAllMemberships)

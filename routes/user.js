@@ -1,18 +1,18 @@
 import express from "express";
-import  { verifyTokenAndAdmin, verifyTokenAndAuthorization } from "./verifyToken.js";
+import  verify from "./verifyToken.js";
 import { deleteUser, getAllUser, getUser, getUserStats, update } from "../controllers/user.js";
 
 const router = express.Router();
 
-router.put('/:id', verifyTokenAndAuthorization , update );
+router.put('/:id', verify , update );
 
-router.delete('/:id', verifyTokenAndAuthorization , deleteUser );
+router.delete('/:id', verify , deleteUser );
 
-router.get('/find/:id', verifyTokenAndAdmin , getUser );
+router.get('/find/:id', verify, getUser );
 
-router.get('/', verifyTokenAndAdmin , getAllUser );
+router.get('/', verify, getAllUser );
 
-router.get('/stats', verifyTokenAndAdmin , getUserStats );
+router.get('/stats', verify , getUserStats );
 
 
 export default router;

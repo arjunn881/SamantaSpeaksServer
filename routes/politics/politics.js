@@ -1,6 +1,6 @@
 
 import express  from "express";
-import { verifyTokenAndAdmin } from "../verifyToken.js";
+import verify from "../verifyToken.js";
 import { AddPolitics, deletePolitics, getAllPolitics, getPolitics, updatePolitics } from "../../controllers/politics/politics.js";
 
 
@@ -10,9 +10,9 @@ import { AddPolitics, deletePolitics, getAllPolitics, getPolitics, updatePolitic
 
 const politicsRouter = express.Router();
 
-politicsRouter.post("/add",verifyTokenAndAdmin, AddPolitics);
-politicsRouter.put("/:id", verifyTokenAndAdmin, updatePolitics)
-politicsRouter.delete("/:id", verifyTokenAndAdmin, deletePolitics)
+politicsRouter.post("/add",verify, AddPolitics);
+politicsRouter.put("/:id", verify, updatePolitics)
+politicsRouter.delete("/:id", verify, deletePolitics)
 
 politicsRouter.get("/:id", getPolitics)
 politicsRouter.get("/", getAllPolitics)

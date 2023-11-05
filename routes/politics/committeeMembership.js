@@ -1,14 +1,14 @@
 
 import express from 'express';
-import { verifyTokenAndAdmin } from '../verifyToken.js';
+import verify from '../verifyToken.js';
 import { AddCommitteeMembership, deleteCommitteeMembership, getAllCommitteeMembership, getCommitteeMembership, updateCommitteeMembership } from '../../controllers/politics/committeeMembership.js';
 
 
 const committeeMembershipRouter = express.Router();
 
-committeeMembershipRouter.post("/add",verifyTokenAndAdmin, AddCommitteeMembership);
-committeeMembershipRouter.put("/:id", verifyTokenAndAdmin, updateCommitteeMembership)
-committeeMembershipRouter.delete("/:id", verifyTokenAndAdmin, deleteCommitteeMembership)
+committeeMembershipRouter.post("/add",verify, AddCommitteeMembership);
+committeeMembershipRouter.put("/:id", verify, updateCommitteeMembership)
+committeeMembershipRouter.delete("/:id", verify, deleteCommitteeMembership)
 
 committeeMembershipRouter.get("/:id", getCommitteeMembership)
 committeeMembershipRouter.get("/", getAllCommitteeMembership)
